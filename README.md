@@ -3,13 +3,6 @@ Monitor systems remotely through SSH, the goal is to otherwise be agent-less on 
 
 ## Use
 Note: This works best with key based (password-less) SSH.
-### Update hosts array
 ```
-~/big-brother$ nano bigbrother.sh
-
-hosts=("localhost example.com")
-```
-### Then run
-```
-~/big-brother$ ./bigbrother.sh
+~/big-brother$ ./bigbrother.sh "localhost example.com"
 ```
