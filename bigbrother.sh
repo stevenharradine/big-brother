@@ -2,15 +2,20 @@
 scriptsPath="scripts/"
 scripts=$( cd $scriptsPath && ls)
 
-host="example.com"
+hosts=("localhost example.com")
 
-ssh $host mkdir .bigbrother
-scp -r * $host:~/.bigbrother
+for host in $hosts; do
+  echo ""
+  echo "Connecting to" $host
 
-for script in $scripts; do
-  echo "Running $script"
+  ssh $host mkdir .bigbrother
+  scp -rq * $host:~/.bigbrother
 
-  ssh $host ~/.bigbrother/$scriptsPath$script
+  for script in $scripts; do
+    echo "Running" $script
+
+    ssh $host ~/.bigbrother/$scriptsPath$script
+  done
+
+  ssh $host rm -rf ~/.bigbrother
 done
-
-ssh $host rm -rf ~/.bigbrother
