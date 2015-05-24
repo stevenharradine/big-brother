@@ -1,8 +1,7 @@
 #!/bin/bash
 scriptsPath="scripts/"
 scripts=$( cd $scriptsPath && ls)
-
-hosts=("localhost example.com")
+hosts=( "$@" )
 
 for host in $hosts; do
   echo ""
