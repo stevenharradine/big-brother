@@ -3,6 +3,8 @@ process.stdin.setEncoding('utf8');
 process.stdin.on('readable', function() {
   var chunk = process.stdin.read();
   if (chunk !== null) {
-  	console.log(chunk);
+  	var line = chunk.trim();
+
+  	console.log(line.substring(0, line.length - 1));
   }
 });
