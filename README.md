@@ -4,5 +4,5 @@ Monitor systems remotely through SSH, the goal is to otherwise be agent-less on 
 ## Use
 Note: This works best with key based (password-less) SSH.
 ```
-~/big-brother$ ./bigbrother.sh "localhost example.com"
+~/big-brother$ ./run.sh "localhost example.com"
 ```
