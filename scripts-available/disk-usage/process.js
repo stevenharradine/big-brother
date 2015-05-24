@@ -12,9 +12,16 @@ process.stdin.on('readable', function() {
 		if (this_line != "") {
 			var path    = this_line[0];
 			var percent = this_line[4];
-			var numeric = percent.substring(0, percent.length - 1);
+			var diskUsage = percent.substring(0, percent.length - 1);
 
-			console.log(numeric);
+			console.log (
+				"    " +
+				(
+					diskUsage > 90 ? "ALERT "   + path + " is at " + percent :
+					diskUsage > 50 ? "Warning " + path + " is at " + percent :
+					                 "OK"
+				)
+			);
 		}
 	}
   }

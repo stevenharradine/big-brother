@@ -11,7 +11,7 @@ for host in $hosts; do
   scp -rq * $host:~/.bigbrother
 
   for script in $scripts; do
-    echo "Running" $script
+    echo "  Running" $script
 
     ssh $host ~/.bigbrother/$scriptsPath$script""run.sh | node $scriptsPath$script""process.js
   done
