@@ -13,7 +13,7 @@ for host in $hosts; do
   for script in $scripts; do
     echo "Running" $script
 
-    ssh $host ~/.bigbrother/$scriptsPath$script
+    ssh $host ~/.bigbrother/$scriptsPath$script | node to-data-store.js
   done
 
   ssh $host rm -rf ~/.bigbrother
