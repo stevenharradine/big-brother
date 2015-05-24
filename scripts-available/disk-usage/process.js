@@ -8,14 +8,15 @@ module.exports = function (chunk) {
 		if (this_line != "") {
 			var path    = this_line[0];
 			var percent = this_line[4];
-			var diskUsage = percent.substring(0, percent.length - 1);
+			var usage   = percent.substring(0, percent.length - 1);
+			var message = path + " is at " + percent;
 
 			console.log (
 				"    " +
 				(
-					diskUsage > 90 ? "ALERT "   + path + " is at " + percent :
-					diskUsage > 50 ? "Warning " + path + " is at " + percent :
-					                 "OK"
+					usage > 90 ? "ALERT "   + message :
+					usage > 50 ? "Warning " + message :
+					             "OK"
 				)
 			);
 		}
