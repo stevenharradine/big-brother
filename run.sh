@@ -1,5 +1,5 @@
 #!/bin/bash
-scriptsPath="scripts/"
+scriptsPath="scripts-enabled/"
 scripts=$( cd $scriptsPath && ls)
 hosts=( "$@" )
 
