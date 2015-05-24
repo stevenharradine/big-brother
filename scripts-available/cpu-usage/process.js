@@ -1,6 +1,5 @@
 module.exports = function (chunk) {
-	var line = chunk.trim();
-	var cpuUsage = line.substring(0, line.length - 1);
+	var cpuUsage = chunk.substring(0, chunk.length - 1);
 
 	console.log(
 		"    " +
