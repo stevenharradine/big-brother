@@ -1,6 +1,6 @@
 #!/bin/bash
 scriptsPath="scripts-enabled/"
-scripts=$( cd $scriptsPath && ls)
+scripts=$( cd $scriptsPath && ls -d */ )
 hosts=( "$@" )
 
 for host in $hosts; do
@@ -13,7 +13,7 @@ for host in $hosts; do
   for script in $scripts; do
     echo "Running" $script
 
-    ssh $host ~/.bigbrother/$scriptsPath$script | node to-data-store.js
+    ssh $host ~/.bigbrother/$scriptsPath$script""run.sh | node $scriptsPath$script""process.js
   done
 
   ssh $host rm -rf ~/.bigbrother

@@ -1,0 +1,11 @@
+{
+  "name": "big-brother",
+  "description": "Monitor systems remotely through SSH, the goal is to otherwise be agent-less on the end systems being monitored",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "awk": "*",
+    "mysql": "*",
+    "nodemailer": "*" 
+  }
+}
