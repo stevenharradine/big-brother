@@ -1,10 +1,6 @@
-process.stdin.setEncoding('utf8');
-
-process.stdin.on('readable', function() {
-  var chunk = process.stdin.read();
-  if (chunk !== null) {
-  	var lines = chunk.split ("\n");
-  	var numberOfLines = lines.length;
+module.exports = function (chunk) {
+	var lines = chunk.split ("\n");
+	var numberOfLines = lines.length;
 
 	for (var linesIndex = 0; linesIndex < numberOfLines; linesIndex++) {
 		var this_line = lines[linesIndex].replace(/\s+/g, ' ').split(" ");
@@ -24,5 +20,4 @@ process.stdin.on('readable', function() {
 			);
 		}
 	}
-  }
-});
+}
