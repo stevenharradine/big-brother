@@ -1,2 +1,2 @@
 #~/bin/bash
-df -h | grep /dev/
+df -h
