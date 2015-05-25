@@ -1,5 +1,6 @@
 module.exports = function (chunk) {
-	var lines = chunk.split ("\n");
+	var lines    = chunk.split ("\n"),
+	    statuses = [];
 
 	for (var linesIndex = 0; linesIndex < lines.length; linesIndex++) {
 		var this_line = lines[linesIndex].replace(/\s+/g, ' ').split(" "),
@@ -8,13 +9,16 @@ module.exports = function (chunk) {
 		    usage     = percent.substring(0, percent.length - 1),
 		    message   = path + " is at " + percent;
 
-		console.log (
-			"    " +
-			(
-				usage > 90 ? "ALERT "   + message :
-				usage > 50 ? "Warning " + message :
-				             "OK"
-			)
-		);
+		usage > 90 ? statuses.push ({
+				"status":"ALERT",
+				"message":message
+		}) : usage > 50 ? statuses.push ({
+				"status":"Warning",
+				"message":message
+		}) : statuses.push ({
+				"status":"OK"
+		});
 	}
+
+	return statuses;
 }

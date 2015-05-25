@@ -1,12 +1,17 @@
 module.exports = function (chunk) {
-	var cpuUsage = chunk.substring(0, chunk.length - 1);
+	var usage    = chunk.substring(0, chunk.length - 1),
+		message  = "CPU usage at " + usage,
+		statuses = [];
 
-	console.log(
-		"    " +
-		(
-			cpuUsage > 90 ? "ALERT "   + cpuUsage :
-			cpuUsage > 50 ? "Warning " + cpuUsage : 
-			                "OK"
-		)
-	);
+	usage > 90 ? statuses.push ({
+			"status":"ALERT",
+			"message":message
+	}) : usage > 50 ? statuses.push ({
+			"status":"Warning",
+			"message":message
+	}) : statuses.push ({
+			"status":"OK"
+	});
+
+	return statuses;
 }
