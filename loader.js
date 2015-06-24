@@ -6,7 +6,10 @@ process.stdin.on('readable', function() {
 	var chunk = process.stdin.read();
 
 	if (chunk !== null) {
-		var statuses = require (path)(chunk.trim()),
+		var statuses = require (path)({
+				chunk            : chunk.trim(),
+				mysql_connection : connection
+			}),
 		    log      = "";
 
 		statuses.hasStatus = function (status) {

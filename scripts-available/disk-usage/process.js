@@ -1,5 +1,5 @@
-module.exports = function (chunk) {
-	var lines    = chunk.split ("\n"),
+module.exports = function (data) {
+	var lines    = data.chunk.split ("\n"),
 	    statuses = [];
 
 	for (var linesIndex = 0; linesIndex < lines.length; linesIndex++) {

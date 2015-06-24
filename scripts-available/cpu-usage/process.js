@@ -1,5 +1,5 @@
-module.exports = function (chunk) {
-	var usage    = chunk.substring(0, chunk.length - 1),
+module.exports = function (data) {
+	var usage    = data.chunk.substring(0, data.chunk.length - 1),
 		message  = "CPU usage at " + usage,
 		statuses = [];
 
