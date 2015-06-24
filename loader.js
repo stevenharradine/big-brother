@@ -1,10 +1,12 @@
 var path       = "./" + process.argv[2],
     host       = process.argv[3],
+    fs         = require('fs'),
+    DB_CONFIG  = JSON.parse(fs.readFileSync('config.json', 'utf8')),
     mysql      = require('mysql'),
     connection = mysql.createConnection({
-    	host     : 'localhost',
-    	user     : 'douglas',
-    	password : 'fargo'
+    	host     : DB_CONFIG.DB_ADDRESS,
+    	user     : DB_CONFIG.DB_USER,
+    	password : DB_CONFIG.DB_PASS
     });
 
 process.stdin.setEncoding('utf8');
