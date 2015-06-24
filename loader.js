@@ -1,4 +1,10 @@
-var path = "./" + process.argv[2];
+var path = "./" + process.argv[2],
+    mysql    = require('mysql'),
+    connection = mysql.createConnection({
+    	host     : 'localhost',
+    	user     : 'douglas',
+    	password : 'fargo'
+    });
 
 process.stdin.setEncoding('utf8');
 
