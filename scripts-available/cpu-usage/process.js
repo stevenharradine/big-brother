@@ -13,5 +13,13 @@ module.exports = function (data) {
 			"status":"OK"
 	});
 
+	var sql = "INSERT INTO `big_brother`.`cpu_usage` (`host`, `cpu_usage`) VALUES ('" + data.host + "', '" + usage + "')";
+console.log (sql);
+	data.mysql_connection.connect();
+	data.mysql_connection.query(sql, function(err, rows, fields) {
+		if (err) throw err;
+	});
+	data.mysql_connection.end();
+
 	return statuses;
 }

@@ -1,5 +1,6 @@
-var path = "./" + process.argv[2],
-    mysql    = require('mysql'),
+var path       = "./" + process.argv[2],
+    host       = process.argv[3],
+    mysql      = require('mysql'),
     connection = mysql.createConnection({
     	host     : 'localhost',
     	user     : 'douglas',
@@ -14,6 +15,7 @@ process.stdin.on('readable', function() {
 	if (chunk !== null) {
 		var statuses = require (path)({
 				chunk            : chunk.trim(),
+				host             : host,
 				mysql_connection : connection
 			}),
 		    log      = "";
