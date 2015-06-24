@@ -39,7 +39,12 @@ process.stdin.on('readable', function() {
 				}
 			}
 		} else {
-			log += "    OK";
+			var message = "";
+			for (statusesIndex = 0; statusesIndex < statuses.length; statusesIndex++) {
+				message += statuses[statusesIndex].message + "\n";
+			}
+
+			log += "    OK (" + message + ")";
 		}
 
 		console.log (log);
