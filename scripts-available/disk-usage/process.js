@@ -4,12 +4,12 @@ module.exports = function (data) {
 
 	data.mysql_connection.connect();
 
-	for (var linesIndex = 0; linesIndex < lines.length; linesIndex++) {
-		var this_line = lines[linesIndex].replace(/\s+/g, ' ').split(" "),
-		    path      = this_line[0],
-		    percent   = this_line[4],
-		    usage     = percent.substring(0, percent.length - 1),
-		    message   = path + " is at " + percent;
+	lines.forEach (function (line) {
+		var line_split = line.replace(/\s+/g, ' ').split(" "),
+		    path       = line_split[0],
+		    percent    = line_split[4],
+		    usage      = percent.substring(0, percent.length - 1),
+		    message    = path + " is at " + percent;
 
 		usage > 90 ? statuses.push ({
 				"status":"ALERT",
@@ -27,8 +27,8 @@ module.exports = function (data) {
 		data.mysql_connection.query(sql, function(err, rows, fields) {
 			if (err) throw err;
 		});
-	}
-	
+	});
+
 	data.mysql_connection.end();
 
 	return statuses;
